@@ -32,7 +32,7 @@
         '<!@(pkg-config pangocairo --libs)',
         '<!@(pkg-config freetype2 --libs)',
         '<!@(pkg-config librsvg-2.0 --libs)',
-        '-ljpeg',
+        '<!@(pkg-config libjpeg --libs)',
         '-lgif'
       ],
       'include_dirs': [
@@ -41,7 +41,8 @@
         '<!@(pkg-config libpng --cflags-only-I | sed s/-I//g)',
         '<!@(pkg-config pangocairo --cflags-only-I | sed s/-I//g)',
         '<!@(pkg-config freetype2 --cflags-only-I | sed s/-I//g)',
-        '<!@(pkg-config librsvg-2.0 --cflags-only-I | sed s/-I//g)'
+        '<!@(pkg-config librsvg-2.0 --cflags-only-I | sed s/-I//g)',
+        '<!@(pkg-config libjpeg --cflags-only-I | sed s/-I//g)',
       ],
       'ldflags': [
         '-Wl,-rpath \'-Wl,$$ORIGIN\''
