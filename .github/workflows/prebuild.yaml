@@ -57,28 +57,41 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
+      - name: Reinstall libjpeg in /usr/local
+        run: |
+          set -ex
+          cd /root/libjpeg-*
+          cd b
+          cmake -G"Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr/local ..
+          make
+          make install
+
       - name: Build
         run: |
-          ls
+          set -ex
           mkdir prebuild
           cp -rfv ./prebuild-branch/prebuild/* ./prebuild/
           npm install -g node-gyp@6.1
           npm install --ignore-scripts
           . prebuild/Linux/preinstall.sh
           cp prebuild/Linux/binding.gyp binding.gyp
-          export PKG_CONFIG_PATH=/opt/libjpeg-turbo/lib64/pkgconfig
           node-gyp rebuild -j 2
           . prebuild/Linux/bundle.sh
 
       - name: Test binary
         run: |
+          set -ex
           cd /root/harfbuzz-* && make uninstall
           cd /root/cairo-* && make uninstall
-          cd /root/pango-* && make uninstall
+          cd /root/pango-* && cd _build && ninja uninstall
           cd /root/libpng-* && make uninstall
-          cd /root/libjpeg-* && make uninstall
+          cd /root/libjpeg-* && cd b && make uninstall
           cd /root/giflib-* && make uninstall
-          cd $GITHUB_WORKSPACE && npm test
+
+          cd $GITHUB_WORKSPACE
+          ls build/Release
+          ldd build/Release/canvas.node
+          npx mocha test/*.test.js
 
       - name: Make bundle
         id: make_bundle
