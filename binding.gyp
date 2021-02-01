@@ -1,6 +1,57 @@
 {
   'targets': [
     {
+      'target_name': 'canvas-postbuild',
+      'dependencies': ['canvas'],
+      'conditions': [
+        ['OS=="win"', {
+          'copies': [{
+            'destination': '<(PRODUCT_DIR)',
+            'files': [
+                '<(GTK_Root)/bin/libbrotlicommon.dll',
+                '<(GTK_Root)/bin/libbrotlidec.dll',
+                '<(GTK_Root)/bin/libbz2-1.dll',
+                '<(GTK_Root)/bin/libcairo-2.dll',
+                '<(GTK_Root)/bin/libcairo-gobject-2.dll',
+                '<(GTK_Root)/bin/libdatrie-1.dll',
+                '<(GTK_Root)/bin/libexpat-1.dll',
+                '<(GTK_Root)/bin/libffi-7.dll',
+                '<(GTK_Root)/bin/libfontconfig-1.dll',
+                '<(GTK_Root)/bin/libfreetype-6.dll',
+                '<(GTK_Root)/bin/libfribidi-0.dll',
+                '<(GTK_Root)/bin/libgcc_s_dw2-1.dll',
+                '<(GTK_Root)/bin/libgdk_pixbuf-2.0-0.dll',
+                '<(GTK_Root)/bin/libgif-7.dll',
+                '<(GTK_Root)/bin/libgio-2.0-0.dll',
+                '<(GTK_Root)/bin/libglib-2.0-0.dll',
+                '<(GTK_Root)/bin/libgmodule-2.0-0.dll',
+                '<(GTK_Root)/bin/libgobject-2.0-0.dll',
+                '<(GTK_Root)/bin/libgraphite2.dll',
+                '<(GTK_Root)/bin/libharfbuzz-0.dll',
+                '<(GTK_Root)/bin/libiconv-2.dll',
+                '<(GTK_Root)/bin/libintl-8.dll',
+                '<(GTK_Root)/bin/libjpeg-8.dll',
+                '<(GTK_Root)/bin/liblzma-5.dll',
+                '<(GTK_Root)/bin/libpango-1.0-0.dll',
+                '<(GTK_Root)/bin/libpangocairo-1.0-0.dll',
+                '<(GTK_Root)/bin/libpangoft2-1.0-0.dll',
+                '<(GTK_Root)/bin/libpangowin32-1.0-0.dll',
+                '<(GTK_Root)/bin/libpcre-1.dll',
+                '<(GTK_Root)/bin/libpixman-1-0.dll',
+                '<(GTK_Root)/bin/libpng16-16.dll',
+                '<(GTK_Root)/bin/librsvg-2-2.dll',
+                '<(GTK_Root)/bin/libstdc++-6.dll',
+                '<(GTK_Root)/bin/libthai-0.dll',
+                '<(GTK_Root)/bin/libwinpthread-1.dll',
+                '<(GTK_Root)/bin/libxml2-2.dll',
+                '<(GTK_Root)/bin/zlib1.dll',
+
+            ]
+          }]
+        }]
+      ]
+    },
+    {
       'target_name': 'canvas',
       'sources': [
         'src/backend/Backend.cc',
