@@ -1,5 +1,8 @@
 {
-  'targets': [
+      'variables': {
+        'GTK_Root%': 'C:/GTK',  # Set the location of GTK all-in-one bundle
+        },
+    'targets': [
     {
       'target_name': 'canvas-postbuild',
       'dependencies': ['canvas'],
@@ -79,32 +82,32 @@
         '_USE_MATH_DEFINES' # for M_PI
       ],
       'libraries': [
-        'C:/msys64/mingw32/lib/libcairo-2.lib',
-        'C:/msys64/mingw32/lib/libpng16-16.lib',
-        'C:/msys64/mingw32/lib/libjpeg-8.lib',
-        'C:/msys64/mingw32/lib/libpango-1.0-0.lib',
-        'C:/msys64/mingw32/lib/libpangocairo-1.0-0.lib',
-        'C:/msys64/mingw32/lib/libgobject-2.0-0.lib',
-        'C:/msys64/mingw32/lib/libglib-2.0-0.lib',
-        'C:/msys64/mingw32/lib/libturbojpeg.lib',
-        'C:/msys64/mingw32/lib/libgif-7.lib',
-        'C:/msys64/mingw32/lib/libfreetype-6.lib',
-        'C:/msys64/mingw32/lib/librsvg-2-2.lib'
+        '<(GTK_Root)/lib/libcairo-2.lib',
+        '<(GTK_Root)/lib/libpng16-16.lib',
+        '<(GTK_Root)/lib/libjpeg-8.lib',
+        '<(GTK_Root)/lib/libpango-1.0-0.lib',
+        '<(GTK_Root)/lib/libpangocairo-1.0-0.lib',
+        '<(GTK_Root)/lib/libgobject-2.0-0.lib',
+        '<(GTK_Root)/lib/libglib-2.0-0.lib',
+        '<(GTK_Root)/lib/libturbojpeg.lib',
+        '<(GTK_Root)/lib/libgif-7.lib',
+        '<(GTK_Root)/lib/libfreetype-6.lib',
+        '<(GTK_Root)/lib/librsvg-2-2.lib'
       ],
       'include_dirs': [
         '<!(node -e "require(\'nan\')")',
-        'C:/msys64/mingw32/include',
-        'C:/msys64/mingw32/include/harfbuzz',
-        'C:/msys64/mingw32/include/pango-1.0',
-        'C:/msys64/mingw32/include/cairo',
-        'C:/msys64/mingw32/include/libpng16',
-        'C:/msys64/mingw32/include/glib-2.0',
-        'C:/msys64/mingw32/lib/glib-2.0/include',
-        'C:/msys64/mingw32/include/pixman-1',
-        'C:/msys64/mingw32/include/freetype2',
-        'C:/msys64/mingw32/include/fontconfig',
-        'C:/msys64/mingw32/include/librsvg-2.0',
-        'C:/msys64/mingw32/include/gdk-pixbuf-2.0'
+        '<(GTK_Root)/include',
+        '<(GTK_Root)/include/harfbuzz',
+        '<(GTK_Root)/include/pango-1.0',
+        '<(GTK_Root)/include/cairo',
+        '<(GTK_Root)/include/libpng16',
+        '<(GTK_Root)/include/glib-2.0',
+        '<(GTK_Root)/lib/glib-2.0/include',
+        '<(GTK_Root)/include/pixman-1',
+        '<(GTK_Root)/include/freetype2',
+        '<(GTK_Root)/include/fontconfig',
+        '<(GTK_Root)/include/librsvg-2.0',
+        '<(GTK_Root)/include/gdk-pixbuf-2.0'
       ],
       'configurations': {
         'Debug': {
