@@ -5,6 +5,7 @@
     'targets': [
     {
       'target_name': 'canvas-postbuild',
+      'win_delay_load_hook': 'true',
       'dependencies': ['canvas'],
       'conditions': [
         ['OS=="win"', {
