@@ -24,7 +24,7 @@ jobs:
   Win:
     strategy:
       matrix:
-        node: [8, 9, 10, 11, 12, 13, 14]
+        node: [12]
         canvas_tag: [v2.6.1] # e.g. "v2.6.1"
     name: ${{ matrix.canvas_tag}}, Node.js ${{ matrix.node }}, Windows
     runs-on: windows-latest
